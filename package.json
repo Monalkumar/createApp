@@ -1,0 +1,19 @@
+{
+  "name": "fullstack",
+  "version": "1.0.0",
+  "description": "Fullstack application",
+  "main": "index.js",
+  "scripts": {
+ "start": "node src/App.js",
+ "dev":  "nodemon src/App.js"
+  },
+  "keywords": [
+    "Fullstack"
+  ],
+  "author": "Monal Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "nodemon": "^3.1.6"
+  }
+}
