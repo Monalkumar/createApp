@@ -1,12 +1,23 @@
-const express = require("express")
+const express = require("express");
 
-const app = express()
+const app = express();
 
+app.get("/users", (req, res) => {
+  res.send({ name: "monal kumar", email: "monalshiv123@gmail.com" });
+});
 
-app.use("/test",(req,res)=>{
-    res.send("hello programmer")
-})
+app.post("/employees", (req, res) => {
+  res.send("post apis successfully");
+});
 
-app.listen(3000,()=>{
-    console.log("server is running on port no 3000, thanks...")
-})
+app.delete("/dlt", (req, res) => {
+  res.send("delet negative thoughts");
+});
+
+app.use("/hello", (req, res) => {
+  res.send("hello programmer");
+});
+
+app.listen(1111, () => {
+  console.log("server is running on port no 1111, thanks...");
+});
