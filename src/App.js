@@ -2,29 +2,29 @@ const express = require("express");
 
 const app = express();
 
-// app.get("/user/:userId/:name/:password", (req, res) => {
-//   console.log(req.params);
-//   res.send({ name: "monal kumar", email: "monalshiv123@gmail.com" });
-// });
-// app.use("/user",(req,res)=>{
-//     console.log("hello router handler 1");
-//     res.send("response1")
-// },
-// (req,res)=>{
-//     console.log("hello route handler 2")
-//     res.send("response2")
-// },
-// )
+app.get("/user/:userId/:name/:password", (req, res) => {
+  console.log(req.params);
+  res.send({ name: "monal kumar", email: "monalshiv123@gmail.com" });
+});
+app.use("/user",(req,res)=>{
+    console.log("hello router handler 1");
+    res.send("response1")
+},
+(req,res)=>{
+    console.log("hello route handler 2")
+    res.send("response2")
+},
+)
 
-// app.use("/user",(req, res)=>{
-//     console.log("hello world")
+app.use("/user",(req, res)=>{
+    console.log("hello world")
 
-// })
+})
 
-// app.get("/user", (req, res) => {
-//   console.log(req.query);
-//   res.send({ name: "monal", age: 100, email: "monal@gmail.com" });
-// });
+app.get("/user", (req, res) => {
+  console.log(req.query);
+  res.send({ name: "monal", age: 100, email: "monal@gmail.com" });
+});
 
 app.use(
   "/users",
