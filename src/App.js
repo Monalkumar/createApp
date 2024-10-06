@@ -32,14 +32,19 @@ const app = express();
 //   res.send({ name: "monal", age: 100, email: "monal@gmail.com" });
 // });
 app.get("/getAllData",(req,res)=>{
-  throw new Error("hsdgfhghfg");
-  res.send("gsduhfgdhfghdg");
+  try{
+    throw new Error("hello");
+    res.send("error handlijng")
+  }
+  catch(err){
+    res.status(500).send("something went wrng")
+  }
 }),
 
-app.use("/",(err,req,res,next)=>{
-  if(err){ 
-    res.status(500).send("someting went wrng")
-  }})
+// app.use("/",(err,req,res,next)=>{
+//   if(err){ 
+//     res.status(500).send("someting went wrng")
+//   }})
 app.listen(1111, () => {
   console.log("server is running on port no 1111, thanks...");
 });
