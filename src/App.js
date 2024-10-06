@@ -1,7 +1,7 @@
 const express = require("express");
 
 const app = express();
-const {authAdmin,authUser}= require("./middleware/auth")
+
 
 // app.get("/user/:userId/:name/:password", (req, res) => {
 //   console.log(req.params);
@@ -31,17 +31,15 @@ const {authAdmin,authUser}= require("./middleware/auth")
 //   console.log("hello 2");
 //   res.send({ name: "monal", age: 100, email: "monal@gmail.com" });
 // });
-app.use("/admin",authAdmin);
-app.get("/users",(req,res)=>{
-  res.send("user data sent")
-  })
+app.get("/getAllData",(req,res)=>{
+  throw new Error("hsdgfhghfg");
+  res.send("gsduhfgdhfghdg");
+}),
 
-  app.get("/admin/getAllData",(req,res)=>{
-    res.send("all data sent")
-    })
-    app.get("/admin/deletApi",(req,res)=>{
-      res.send("all data sent")
-      })
+app.use("/",(err,req,res,next)=>{
+  if(err){ 
+    res.status(500).send("someting went wrng")
+  }})
 app.listen(1111, () => {
   console.log("server is running on port no 1111, thanks...");
 });
