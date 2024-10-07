@@ -1,50 +1,33 @@
+const connectDB = require("./config/database.js");
 const express = require("express");
-
 const app = express();
+const User = require("./models/user.js");
 
+app.post("/signup", async (req, res) => {
+  const user = new User({
+    fullName: "monal Kumar sinha",
+    email: "monal@gmail.com",
+    password: "monal@12345",
+    age: 100,
+    gender: "male",
+  });
 
-// app.get("/user/:userId/:name/:password", (req, res) => {
-//   console.log(req.params);
-//   res.send({ name: "monal kumar", email: "monalshiv123@gmail.com" });
-// });
-// app.use("/user",(req,res)=>{
-//     console.log("hello router handler 1");
-//     res.send("response1")
-// },
-// (req,res)=>{
-//     console.log("hello route handler 2")
-//     res.send("response2")
-// },
-// )
-
-// app.use("/user",(req, res)=>{
-//     console.log("hello world")
-
-// })
-
-// app.get("/users", (req, res,next) => {
-//   console.log("hello");
-//   res.send({ name: "monal", age: 100, email: "monal@gmail.com" });
-//   next()
-// });
-// app.get("/users", (req, res,next) => {
-//   console.log("hello 2");
-//   res.send({ name: "monal", age: 100, email: "monal@gmail.com" });
-// });
-app.get("/getAllData",(req,res)=>{
-  try{
-    throw new Error("hello");
-    res.send("error handlijng")
+  try {
+    await user.save();
+    res.send("users added successfully");
+  } catch (err) {
+    res.status(401).send("something went wrng please resolve it");
   }
-  catch(err){
-    res.status(500).send("something went wrng")
-  }
-}),
-
-// app.use("/",(err,req,res,next)=>{
-//   if(err){ 
-//     res.status(500).send("someting went wrng")
-//   }})
-app.listen(1111, () => {
-  console.log("server is running on port no 1111, thanks...");
 });
+
+// const user=new user(userObj)
+connectDB()
+  .then(() => {
+    console.log("database connected successfully");
+    app.listen(1111, () => {
+      console.log("server is listen successfully at port no 1111");
+    });
+  })
+  .catch((err) => {
+    console.log("error while connecting mongoose db system");
+  });
